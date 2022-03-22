@@ -8,12 +8,16 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long movieId;
+    @Column (name = "TITLE")
     private String title;
+    @Column (name = "COVERIMAGE")
     private String coverImage;
+    @Column (name = "DIRECTOR")
     private String director;
+    @Column (name = "YEAR")
     private int year;
-    @Lob
+    @Lob //tipo de dato binario
     private String synopsis;
 
     public Movie() { }
@@ -26,12 +30,13 @@ public class Movie {
         this.synopsis = synopsis;
     }
 
-    public Long getId() {
-        return id;
+    public Long getMovieId() {
+        return movieId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+    public void setMovieId(Long id) {
+        this.movieId = movieId;
     }
 
     public String getTitle() {
