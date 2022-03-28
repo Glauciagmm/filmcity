@@ -9,7 +9,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long movieId;
+    private Long id;
     @Column (name = "TITLE")
     private String title;
     @Column (name = "COVERIMAGE")
@@ -26,8 +26,7 @@ public class Movie {
     private String renter;
     @Column (name="RATING")
     private int rating;
-    @Column (name = "FIRSTNAME")
-    private String firstName;
+
 
 
 
@@ -43,18 +42,18 @@ public class Movie {
         this.book = book;
         this.renter = renter;
         this.rating = rating;
-        this.firstName = firstName;
+
 
 
     }
 
-    public Long getMovieId() {
-        return movieId;
+    public Long getId() {
+        return id;
     }
 
 
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -77,7 +76,11 @@ public class Movie {
         return synopsis;
     }
 
-    public boolean setBook() { return false; }
+    public boolean getBook () {return true; }
+
+    public boolean setBook(Boolean book) { return true; }
+
+    public String getRenter(){ return renter;}
 
     public void setRenter(String renter) { this.renter = renter; }
 
@@ -85,7 +88,7 @@ public class Movie {
 
     public void setRating(int rating) {this.rating = rating; }
 
-    public String getFirstName() {return firstName; }
+
 
 }
 
