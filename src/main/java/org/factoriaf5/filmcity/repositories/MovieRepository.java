@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface MovieRepository extends JpaRepository<Movie, Long> {} // interface
 
 //una interfaz es como un contrato - espeficifa funcionalidades del trabajo a hacer, define las tareas pero no el como
-//está creando el contracto y heredando las funcionalidades del repositorio del sprungboot
+//está creando el contracto y heredando las funcionalidades del repositorio del springboot
+
+//si necesito hacer una operacion, lo primero que devo pensar es en el repositorio
+//el repositorio nos permite hacer operaciones
