@@ -59,9 +59,11 @@ $git init
 
 # Arquitectura del Código
 
-Existen varios archivos.
+Existen varios archivos en diferentes carpetas:
 
-
+![Carpetas del Back-End de FilmCity](https://github.com/Glauciagmm/filmcity/blob/main/carpetas.jpg?raw=true)
+ 
+Aqui tenemos los atributos de la clase MOVIE de Java para ver los atributos que tenemos de cada película.
 
 ~~~
 public Movie() { }
@@ -77,3 +79,67 @@ public Movie() { }
         this.rating = rating;
     }
 ~~~
+
+Hemos creado métodos getter y setter para obtener datos de las películas:
+
+~~~
+public Long getId() {
+        return id;
+    }
+    
+public String getTitle() {
+        return title;
+    }
+    
+public String getSynopsis() {
+        return synopsis;
+    }
+    
+public boolean getBook () {return true; }
+
+public boolean setBook(Boolean book) { return true; }
+
+public String getRenter(){ return renter;}
+
+public void setRenter(String renter) { this.renter = renter; }
+
+public int getRating() { return rating; }
+
+public void setRating(int rating) {this.rating = rating; }
+~~~
+
+Y después en otra capa del proyecto hemos hecho los Controllers como este de tipo PUT:
+
+~~~
+@PutMapping("/movie/{id}/book")
+    public Movie updateMovieRented(@PathVariable Long id, @RequestParam (value = "renter") String renter) {
+        Movie movie = movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
+        movie.setRenter(renter);
+        movie.setBook(true);
+        return movieRepository.save(movie);
+    }
+~~~
+Este controller de tipo PUT permite actualizar la información de una película que es alquilada y permite guardar el dato de que está "reservada" y quien es la persona que la tiene.
+
+
+## Tecnologías usadas y procedimientos implementados en este proyecto:
+
+:+1: 1. JAVA
+:+1: 2. GitHub
+:+1: 3. Spring Boot
+:+1: 4. Test Driven Development (TDD) para hacer TESTs de la aplicación. (Integration Test)
+:+1: 5. API REST
+:+1: 6. Postman
+:+1: 7. Localhost y el uso de rutas
+:+1: 8. Controllers en JAVA
+:+1: 9. Entidades de Base de Datos
+:+1: 10. @Anotaciones
+
+## Participantes del Proyecto 
+
+:star2: Glaucia
+:star2: Jesús O.
+:star2: Ana 
+:star2: Paula
+
+:pray: Muchas Gracias, esperamos que os guste FilmCity  :vhs: :vhs: :vhs: :vhs: :vhs: :vhs: :vhs: :vhs: :vhs: :vhs:
