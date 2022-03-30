@@ -57,3 +57,23 @@ $git init
 
 :ok_hand: 8. Uso de LocalHost
 
+# Arquitectura del Código
+
+Existen varios archivos.
+
+
+
+~~~
+public Movie() { }
+
+    public Movie(String title, String coverImage, String director, int year, String synopsis, boolean book, String renter, int rating) {
+        this.title = title;
+        this.coverImage = coverImage;
+        this.director = director;
+        this.year = year;
+        this.synopsis = synopsis;
+        this.book = book;
+        this.renter = renter;
+        this.rating = rating;
+    }
+~~~
