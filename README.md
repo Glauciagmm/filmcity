@@ -42,10 +42,18 @@ $git init
 ### Conocimientos Requeridos
 
 :ok_hand: 1. Java (JDK 17)
+
 :ok_hand: 2. Spring Boot
+
 :ok_hand: 3. API REST
+
 :ok_hand: 4. Postman
+
 :ok_hand: 5. IntelliJ IDEA (IDE)
+
 :ok_hand: 6. XAMPP
+
 :ok_hand: 7. Bases de Datos (phpMyAdmin)
+
 :ok_hand: 8. Uso de LocalHost
+
