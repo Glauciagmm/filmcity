@@ -5,7 +5,8 @@ FilmCity es un repositorio que incluye todos los archivos necesarios para tener 
 Hemos usado el lenguaje de programación JAVA para crear una API Rest con su Base de Datos. Hemos usado Spring Boot y el JDK 17 de Java.
 
 ## Funcionalidades principales :computer:
-Nuestro BACK-END de FilmCity permite:
+Nuestro BACK-END de FilmCity permite:  :clapper:  :clapper:  :clapper:  :clapper:
+
 1. Insertar nuevas películas en la base de datos.
 2. Borrar películas de la base de datos.
 3. Permite buscar películas dentro de la base de datos.
@@ -37,3 +38,14 @@ $git init
 
 
 :file_folder: [Haz click aquí](https://github.com/Glauciagmm/filmcity/archive/refs/heads/main.zip) para descargar el formato de archivo comprimido [.ZIP](https://github.com/Glauciagmm/filmcity/archive/refs/heads/main.zip)
+
+### Conocimientos Requeridos
+
+:ok_hand: 1. Java (JDK 17)
+:ok_hand: 2. Spring Boot
+:ok_hand: 3. API REST
+:ok_hand: 4. Postman
+:ok_hand: 5. IntelliJ IDEA (IDE)
+:ok_hand: 6. XAMPP
+:ok_hand: 7. Bases de Datos (phpMyAdmin)
+:ok_hand: 8. Uso de LocalHost
