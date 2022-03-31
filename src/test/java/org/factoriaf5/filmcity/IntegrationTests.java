@@ -23,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+
 @SpringBootTest
 @AutoConfigureMockMvc
 class IntegrationTests {
@@ -38,8 +39,8 @@ class IntegrationTests {
     void setUp() {
         movieRepository.deleteAll();
     }
-    /** Teste que llama a la librería y hace peticiones http. Comprueba cada uno de los campos.
-     * la primera es una llamada de tipo get a la libreraí que simula peticiones o request http, la segunda devuelve los/el objetos*/
+    /** Test que llama a la libreria y hace peticiones http. Comprueba cada uno de los campos.
+     * la primera es una llamada de tipo get a la libreria que simula peticiones o request http, la segunda devuelve los/el objetos*/
     @Test
     void returnsTheExistingMovies() throws Exception {
 
@@ -92,7 +93,7 @@ class IntegrationTests {
         movieRepository.saveAll(movies);
     }
 
-    /**Comprueba que la función del método @PostMapping funciona para crear una nueva película*/
+    /**Comprueba que la función del método @PostMapping funciona para crear una nueva película en el repositório*/
     @Test
     void allowsToCreateANewMovie() throws Exception {
         mockMvc.perform(post("/movies")
@@ -140,7 +141,7 @@ class IntegrationTests {
                 .andExpect(jsonPath("$.rating", equalTo( 5)));
     }
 
-    /**Comprueba que la función con el método @Getmapping funciona para encontrar una película/objeto que no existe en el repositório*/
+    /**Comprueba que la función con el método @Getmapping funciona para informar que una película/objeto no existe en el repositório*/
     @Test
     void returnsAnErrorIfTryingToGetAMOVIEThatDoesNotExist() throws Exception {
         mockMvc.perform(get("/movie/1"))
@@ -157,8 +158,8 @@ class IntegrationTests {
 
         List<Movie> movies = movieRepository.findAll();
         asserThat (movies, not(contains(allOf(
-               hasProperty("", is("")),
-               hasProperty("", is(""))
+               hasProperty("title", is("Jurassic Park")),
+               hasProperty("director", is("Brad Bird"))
         ))));
     }
 
@@ -176,14 +177,14 @@ class IntegrationTests {
     @Test
     void allowsToFindARenterMovie() throws Exception{
 
-        Movie movie = movieRepository.save(new Movie("", "","",1234,"",false,"null",4));
+        Movie movie = movieRepository.save(new Movie("Cruella", "https://pics.filmaffinity.com/Cruella-196211257-large.jpg","Craig Gillespie",2021,"",true,"Pepito",4));
         mockMvc.perform(get("/movie/1/book?renter="+ movie.getTitle()));
                  andExpect(status().isOk());
 
         List<Movie> movies = movieRepository.findAll();
         asserThat (movies, not(contains(allOf(
-                hasProperty("", is("")),
-                hasProperty("", is(""))
+                hasProperty("title", is("Cruela")),
+                hasProperty("director", is("Craig Gillespie"))
         ))));
     }
 

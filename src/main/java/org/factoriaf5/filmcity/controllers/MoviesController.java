@@ -55,7 +55,7 @@ public class MoviesController{
      * cuanto la encuetra ejecuta la función de modificar los datos de una película. */
     @PutMapping("/movies")
     public Movie updateMovieById(@RequestBody Movie movie) {
-        movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
+        //movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
         return movieRepository.save(movie);
     }
 
