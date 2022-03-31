@@ -38,16 +38,17 @@ class IntegrationTests {
     void setUp() {
         movieRepository.deleteAll();
     }
-    /** Teste que llama a la libreria y hace peticiones http. Comprueba cada uno de los campos */
+    /** Teste que llama a la librería y hace peticiones http. Comprueba cada uno de los campos.
+     * la primera es una llamada de tipo get a la libreraí que simula peticiones o request http, la segunda devuelve los/el objetos*/
     @Test
     void returnsTheExistingMovies() throws Exception {
 
         addSampleMovies();
 
-        mockMvc.perform(get("/movies")) //llamada tipo get a la libreria que simula peticiones o request http
-                .andExpect(status().isOk()) // siempre devuleve un codigo de estado - codigo 200 significa que está ok
-                .andExpect(jsonPath("$[*]", hasSize(2))) // prueba que la respuesta devuelve el objeto con 2 elementos
-                .andExpect(jsonPath("$[0].title", equalTo("Jurassic Park"))) // primera pelicula su titulo es jurassic park y vas probando todos los campos
+        mockMvc.perform(get("/movies"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[*]", hasSize(2)))
+                .andExpect(jsonPath("$[0].title", equalTo("Jurassic Park")))
                 .andExpect(jsonPath("$[0].coverImage", equalTo("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg")))
                 .andExpect(jsonPath("$[0].director", equalTo("Steven Spielberg")))
                 .andExpect(jsonPath("$[0].year", equalTo(1993)))
@@ -65,7 +66,8 @@ class IntegrationTests {
                 .andExpect(jsonPath("$[1].rating", equalTo(4)))
                 .andDo(print()); //imprime el catalogo de peliculas
     }
-    /**Añade objetos al método que luego serán comprobados en el test de arriba*/
+
+    /**Añade objetos al método que luego serán comprobados en el test returnsTheExistingMovies*/
     private void addSampleMovies() {
         List<Movie> movies = List.of(
                 new Movie("Jurassic Park",
@@ -90,7 +92,7 @@ class IntegrationTests {
         movieRepository.saveAll(movies);
     }
 
-
+    /**Comprueba que la función del método @PostMapping funciona para crear una nueva película*/
     @Test
     void allowsToCreateANewMovie() throws Exception {
         mockMvc.perform(post("/movies")
@@ -120,7 +122,7 @@ class IntegrationTests {
                 )));
     }
 
-
+    /**Comprueba que la función con el método @Getmapping funciona para encontrar una película/objeto por su Id*/
     @Test
     void allowsToFindAMovieById() throws Exception {
 
@@ -138,12 +140,14 @@ class IntegrationTests {
                 .andExpect(jsonPath("$.rating", equalTo( 5)));
     }
 
+    /**Comprueba que la función con el método @Getmapping funciona para encontrar una película/objeto que no existe en el repositório*/
     @Test
     void returnsAnErrorIfTryingToGetAMOVIEThatDoesNotExist() throws Exception {
         mockMvc.perform(get("/movie/1"))
                 .andExpect(status().isNotFound());
     }
 
+    /**Comprueba que la función con el método @Deletemapping funciona para encontrar y borrar una película/objeto por su Id*/
     @Test
     void allowsToDeleteAMovieById() throws Exception {
         Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg", "Brad Bird", 2007, "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate. He would love to become a chef so he can create and enjoy culinary masterpieces to his heart's delight. The only problem is, Remy is a rat", false, "null", 4));
@@ -161,13 +165,14 @@ class IntegrationTests {
     private void asserThat(List<Movie> movies, Matcher<Iterable<?>> not) {
     }
 
-
+    /**Comprueba que la función con el método @Deletemapping funciona para encontrar una película/objeto que no existe en el repositório*/
     @Test
     void returnsAnErrorIfTryingToDeleteAMovieThatDoesNotExist() throws Exception {
         mockMvc.perform(delete("/movies/1"))
                 .andExpect(status().isNotFound());
     }
 
+    /**Comprueba que la función con el método @Putmapping funciona para encontrar una película/objeto y alterar sus datos en el repositório*/
     @Test
     void allowsToFindARenterMovie() throws Exception{
 
@@ -185,6 +190,7 @@ class IntegrationTests {
     private void andExpect(ResultMatcher ok) {
     }
 
+    /**Comprueba que la función con el método @Putmapping funciona para encontrar una película/objeto y alterar sus datos en el repositório*/
     @Test
     void allowsToModifyAMovie() throws Exception {
         Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg", "Steven Spielberg", 1993, "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.", false, null, 4));
