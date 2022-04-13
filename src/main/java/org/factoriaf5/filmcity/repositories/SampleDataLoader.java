@@ -48,7 +48,7 @@ public class SampleDataLoader {
                             true,
                             "Brian de Palma",
                             2),
-            new Movie("El Color purpura",
+            new Movie("El Color Purpura",
                             "https://es.web.img3.acsta.net/r_1920_1080/img/01/f9/01f90f60ddc942042c0800df54f830d2.jpg",
                             "Steven Spielberg",
                             1985,
