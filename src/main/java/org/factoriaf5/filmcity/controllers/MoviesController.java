@@ -3,19 +3,22 @@ package org.factoriaf5.filmcity.controllers;
 import org.factoriaf5.filmcity.domain.Movie;
 import org.factoriaf5.filmcity.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 /**@RestControler es una anotación de classe que se encarga de recibir las peticiones HTTP - analisa los datos que llegan de la peticion */
 @RestController
-
+@CrossOrigin(origins="http://127.0.0.1:5500/")
 public class MoviesController{
 
+    @Autowired
     private final MovieRepository movieRepository;
 
-    @Autowired
     MoviesController(MovieRepository movieRepository){
         this.movieRepository = movieRepository;
     }
@@ -23,7 +26,7 @@ public class MoviesController{
     /**Es una anotación que espera la petición  de método GET para la ruta "/movies" -
      * cuanto la encuetra ejecuta la función (findAll) de encontrar todas las peliculas del repositório. */
     @GetMapping("/movies")
-    public List<Movie> allMovies() {
+    public List<Movie> findAllMovies() {
         return movieRepository.findAll();
     }
 
@@ -34,6 +37,20 @@ public class MoviesController{
     public Movie findMovie(@PathVariable Long id) {
         return movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
     }
+/**
+    @GetMapping("/moviess/{id}")
+    public ResponseEntity<Movie> getUserByID(@PathVariable long id) {
+        //Es un Optional<T>
+        Optional<Movie> u = movieRepository.findById(id);
+        //Si está presente lo devolvemos
+        if(movie.isPresent()){
+            return ResponseEntity.ok(movie.get());
+        }
+        //Si no, lanzamos un error
+        else{
+            throw new ChangeSetPersister.NotFoundException("Not found Movie by id: " + id);
+        }
+    }*/
 
     /** Es una anotación que espera la petición  de metodo POST para la ruta "/movies" -
      * cuanto la encuetra ejecuta la función de añadir una película al repositório.*/
@@ -61,7 +78,7 @@ public class MoviesController{
 
     /**Encuentra la pelicula por su Id, la marca como alquilada de acuerdo con el id {id}, además,
      *  registra el nombre de quien la ha alquilado*/
-    @PutMapping("/movie/{id}/book")
+    @PutMapping("/movies/{id}/book")
     public Movie updateMovieRented(@PathVariable Long id, @RequestParam (value = "renter") String renter) {
         Movie movie = movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
         movie.setRenter(renter);

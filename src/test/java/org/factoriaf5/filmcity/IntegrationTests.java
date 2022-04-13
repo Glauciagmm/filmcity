@@ -210,6 +210,10 @@ class IntegrationTests {
         assertThat(movies.get(0).getTitle(), equalTo("Hero of Central Park"));
         assertThat(movies.get(0).getCoverImage(), equalTo("https://imgix.ranker.com/node_img/9/166109/original/chestnut-hero-of-central-park-films-photo-1?auto=format&q=60&fit=fill&fm=pjpg&dpr=2&crop=faces&bg=fff&h=333&w=333"));
     }
+    @Test
+    void allowsToConectRepository () throws Exception {
+
+    }
 
 
 }
