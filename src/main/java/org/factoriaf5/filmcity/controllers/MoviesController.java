@@ -15,8 +15,8 @@ import java.util.Optional;
 
 /**@RestControler es una anotación de classe que se encarga de recibir las peticiones HTTP - analisa los datos que llegan de la peticion */
 @RestController
-@CrossOrigin(origins="http://127.0.0.1:5500")
 
+@CrossOrigin(origins="http://127.0.0.1:5500")
 
 public class MoviesController{
 
