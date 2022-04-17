@@ -7,13 +7,17 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Access.*;
+import javax.persistence.Access.*;
 import java.util.List;
 import java.util.Optional;
 
 
 /**@RestControler es una anotación de classe que se encarga de recibir las peticiones HTTP - analisa los datos que llegan de la peticion */
 @RestController
-@CrossOrigin(origins="http://127.0.0.1:5500/")
+@CrossOrigin(origins="http://127.0.0.1:5500")
+
+
 public class MoviesController{
 
     @Autowired
